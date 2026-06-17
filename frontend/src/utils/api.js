@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'https://messfinder-eepq.onrender.com/api';
+const BASE_URL = 'https://messfinder-eepq.onrender.com';
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -28,49 +28,49 @@ api.interceptors.response.use(
 export default api;
 
 export const authAPI = {
-  register: (data) => api.post('/auth/register', data),
-  login: (data) => api.post('/auth/login', data),
-  getMe: () => api.get('/auth/me'),
+  register: (data) => api.post('/api/auth/register', data),
+  login: (data) => api.post('/api/auth/login', data),
+  getMe: () => api.get('/api/auth/me'),
 };
 
 export const messAPI = {
-  getAll: (params) => api.get('/mess', { params }),
-  getById: (id) => api.get(`/mess/${id}`),
-  getMyListings: () => api.get('/mess/owner/my-listings'),
-  create: (data) => api.post('/mess', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
-  update: (id, data) => api.put(`/mess/${id}`, data, { headers: { 'Content-Type': 'multipart/form-data' } }),
-  delete: (id) => api.delete(`/mess/${id}`),
-  toggleAvailability: (id) => api.patch(`/mess/${id}/availability`),
-  removePhoto: (id, photoUrl) => api.delete(`/mess/${id}/photos`, { data: { photoUrl } }),
-  addReview: (id, data) => api.post(`/mess/${id}/review`, data),
+  getAll: (params) => api.get('/api/mess', { params }),
+  getById: (id) => api.get(`/api/mess/${id}`),
+  getMyListings: () => api.get('/api/mess/owner/my-listings'),
+  create: (data) => api.post('/api/mess', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  update: (id, data) => api.put(`/api/mess/${id}`, data, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  delete: (id) => api.delete(`/api/mess/${id}`),
+  toggleAvailability: (id) => api.patch(`/api/mess/${id}/availability`),
+  removePhoto: (id, photoUrl) => api.delete(`/api/mess/${id}/photos`, { data: { photoUrl } }),
+  addReview: (id, data) => api.post(`/api/mess/${id}/review`, data),
 };
 
 export const bookingAPI = {
-  create: (data) => api.post('/bookings', data),
-  getMyBookings: () => api.get('/bookings/my'),
-  getOwnerBookings: () => api.get('/bookings/owner'),
-  updateStatus: (id, data) => api.patch(`/bookings/${id}/status`, data),
-  cancel: (id) => api.patch(`/bookings/${id}/cancel`),
+  create: (data) => api.post('/api/bookings', data),
+  getMyBookings: () => api.get('/api/bookings/my'),
+  getOwnerBookings: () => api.get('/api/bookings/owner'),
+  updateStatus: (id, data) => api.patch(`/api/bookings/${id}/status`, data),
+  cancel: (id) => api.patch(`/api/bookings/${id}/cancel`),
 };
 
 export const userAPI = {
-  updateProfile: (data) => api.put('/users/profile', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
-  getFavourites: () => api.get('/users/favourites'),
-  toggleFavourite: (messId) => api.post(`/users/favourites/${messId}`),
+  updateProfile: (data) => api.put('/api/users/profile', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  getFavourites: () => api.get('/api/users/favourites'),
+  toggleFavourite: (messId) => api.post(`/api/users/favourites/${messId}`),
 };
 
 export const notificationAPI = {
-  getAll: () => api.get('/notifications'),
-  markAsRead: (ids) => api.patch('/notifications/read', { ids }),
+  getAll: () => api.get('/api/notifications'),
+  markAsRead: (ids) => api.patch('/api/notifications/read', { ids }),
 };
 
 export const adminAPI = {
-  getStats: () => api.get('/admin/stats'),
-  getPendingOwners: () => api.get('/admin/owners/pending'),
-  updateOwnerApproval: (id, action) => api.patch(`/admin/owners/${id}/approval`, { action }),
-  getUsers: (params) => api.get('/admin/users', { params }),
-  toggleUserStatus: (id) => api.patch(`/admin/users/${id}/toggle`),
-  deleteUser: (id) => api.delete(`/admin/users/${id}`),
-  getAllMess: () => api.get('/admin/mess'),
-  getAllBookings: () => api.get('/admin/bookings'),
+  getStats: () => api.get('/api/admin/stats'),
+  getPendingOwners: () => api.get('/api/admin/owners/pending'),
+  updateOwnerApproval: (id, action) => api.patch(`/api/admin/owners/${id}/approval`, { action }),
+  getUsers: (params) => api.get('/api/admin/users', { params }),
+  toggleUserStatus: (id) => api.patch(`/api/admin/users/${id}/toggle`),
+  deleteUser: (id) => api.delete(`/api/admin/users/${id}`),
+  getAllMess: () => api.get('/api/admin/mess'),
+  getAllBookings: () => api.get('/api/admin/bookings'),
 };
