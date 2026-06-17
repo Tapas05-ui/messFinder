@@ -10,8 +10,7 @@ import { io } from "socket.io-client";
 
 const AuthContext = createContext(null);
 
-const SOCKET_URL =
-  import.meta.env.VITE_SOCKET_URL || "https://messfinder-eepq.onrender.com";
+const SOCKET_URL = "https://messfinder-eepq.onrender.com";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
