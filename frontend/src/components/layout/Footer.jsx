@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Home, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Home, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -10,16 +10,32 @@ export default function Footer() {
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
               <Home className="w-4 h-4 text-white" />
             </div>
-            <span className="font-display font-bold text-xl text-white">Mess<span className="text-primary-400">Finder</span></span>
+            <span className="font-display font-bold text-xl text-white">
+              Mess<span className="text-primary-400">Finder</span>
+            </span>
           </div>
-          <p className="text-sm text-gray-400 leading-relaxed">Find the perfect mess near your college. Compare prices, facilities, and book easily.</p>
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Find the perfect mess near your college. Compare prices, facilities,
+            and book easily.
+          </p>
         </div>
 
         <div>
           <h4 className="font-semibold text-white mb-4">Quick Links</h4>
           <ul className="space-y-2 text-sm">
-            {[['/', 'Home'], ['/mess', 'Find Mess'], ['/register', 'Register']].map(([to, label]) => (
-              <li key={to}><Link to={to} className="hover:text-primary-400 transition-colors">{label}</Link></li>
+            {[
+              ["/", "Home"],
+              ["/mess", "Find Mess"],
+              ["/register", "Register"],
+            ].map(([to, label]) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  {label}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -37,15 +53,24 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-4">Contact</h4>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary-400" /><span>support@messfinder.com</span></li>
-            <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary-400" /><span>+91 98765 43210</span></li>
-            <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary-400" /><span>India</span></li>
+            <li className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-primary-400" />
+              <span>support@messfinder.com</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-primary-400" />
+              <span>+91 98765 43210</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary-400" />
+              <span>India</span>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-800 py-4 text-center text-sm text-gray-500">
+      {/* <div className="border-t border-gray-800 py-4 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} MessFinder. All rights reserved.
-      </div>
+      </div> */}
     </footer>
   );
 }
